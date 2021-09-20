@@ -35,7 +35,6 @@ import code.name.monkey.retromusic.model.CategoryInfo
 import code.name.monkey.retromusic.model.Song
 import code.name.monkey.retromusic.repository.PlaylistSongsLoader
 import code.name.monkey.retromusic.service.MusicService
-import code.name.monkey.retromusic.util.AppRater
 import code.name.monkey.retromusic.util.PreferenceUtil
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
@@ -60,7 +59,6 @@ class MainActivity : AbsCastActivity(), OnSharedPreferenceChangeListener {
         setTaskDescriptionColorAuto()
         hideStatusBar()
         updateTabs()
-        AppRater.appLaunched(this)
 
         setupNavigationController()
         if (!hasPermissions()) {

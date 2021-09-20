@@ -18,24 +18,12 @@ android {
         applicationId "code.name.monkey.retromusic"
         versionCode 10520
         versionName '5.0.0' + "_" + getDate()
-
-        buildConfigField("String", "GOOGLE_PLAY_LICENSING_KEY", "\"${getProperty(getProperties('../public.properties'), 'GOOGLE_PLAY_LICENSE_KEY')}\"")
-    }
-    signingConfigs {
-        release {
-            Properties properties = getProperties('retro.properties')
-            storeFile file(getProperty(properties, 'storeFile'))
-            keyAlias getProperty(properties, 'keyAlias')
-            storePassword getProperty(properties, 'storePassword')
-            keyPassword getProperty(properties, 'keyPassword')
-        }
     }
     buildTypes {
         release {
             //debuggable true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
         }
         debug {
             applicationIdSuffix '.debug'
@@ -121,7 +109,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
-    implementation 'com.google.android.play:core-ktx:1.8.1'
     implementation 'com.google.android.material:material:1.5.0-alpha03'
 
     def retrofit_version = '2.9.0'
@@ -155,7 +142,6 @@ dependencies {
 
     implementation 'org.eclipse.mylyn.github:org.eclipse.egit.github.core:3.4.0.201406110918-r'
     implementation 'org.bitbucket.ijabz:jaudiotagger:2.2.5'
-    implementation 'com.anjlab.android.iab.v3:library:1.1.0'
     implementation 'com.r0adkll:slidableactivity:2.1.0'
     implementation 'com.heinrichreimersoftware:material-intro:2.0.0'
     implementation 'com.github.dhaval2404:imagepicker:1.7.1'
