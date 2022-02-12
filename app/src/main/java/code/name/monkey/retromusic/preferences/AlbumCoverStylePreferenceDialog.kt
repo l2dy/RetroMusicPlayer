@@ -80,9 +80,6 @@ class AlbumCoverStylePreferenceDialog : DialogFragment(),
             .setPositiveButton(R.string.set) { _, _ ->
                 val coverStyle = values()[viewPagerPosition]
                 if (isAlbumCoverStyle(coverStyle)) {
-                    val result = getString(coverStyle.titleRes) + " theme is Pro version feature."
-                    Toast.makeText(context, result, Toast.LENGTH_SHORT).show()
-                    NavigationUtil.goToProVersion(requireActivity())
                 } else {
                     PreferenceUtil.albumCoverStyle = coverStyle
                 }
