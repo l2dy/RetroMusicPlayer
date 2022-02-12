@@ -74,20 +74,6 @@ class MainSettingsFragment : Fragment(), View.OnClickListener {
         binding.aboutSettings.setOnClickListener(this)
         binding.backupRestoreSettings.setOnClickListener(this)
 
-        binding.buyProContainer.apply {
-            isGone = App.isProVersion()
-            setOnClickListener {
-                NavigationUtil.goToProVersion(requireContext())
-            }
-        }
-        binding.buyPremium.setOnClickListener {
-            NavigationUtil.goToProVersion(requireContext())
-        }
-        ThemeStore.accentColor(requireContext()).let {
-            binding.buyPremium.setTextColor(it)
-            binding.diamondIcon.imageTintList = ColorStateList.valueOf(it)
-        }
-
         binding.container.drawAboveSystemBarsWithPadding()
     }
 

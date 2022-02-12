@@ -39,7 +39,6 @@ abstract class AbsSettingsFragment : ATEPreferenceFragmentCompat() {
 
     internal fun showProToastAndNavigate(message: String) {
         showToast(getString(R.string.message_pro_feature, message))
-        NavigationUtil.goToProVersion(requireActivity())
     }
 
     internal fun setSummary(preference: Preference, value: Any?) {

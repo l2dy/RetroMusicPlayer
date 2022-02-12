@@ -23,14 +23,11 @@ import code.name.monkey.retromusic.activities.ErrorActivity
 import code.name.monkey.retromusic.appshortcuts.DynamicShortcutManager
 import code.name.monkey.retromusic.extensions.showToast
 import code.name.monkey.retromusic.helper.WallpaperAccentManager
-import com.anjlab.android.iab.v3.BillingProcessor
-import com.anjlab.android.iab.v3.PurchaseInfo
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class App : Application() {
 
-    lateinit var billingProcessor: BillingProcessor
     private val wallpaperAccentManager = WallpaperAccentManager(this)
 
     override fun onCreate() {
@@ -53,28 +50,12 @@ class App : Application() {
         if (VersionUtils.hasNougatMR())
             DynamicShortcutManager(this).initDynamicShortcuts()
 
-        // automatically restores purchases
-        billingProcessor = BillingProcessor(
-            this, BuildConfig.GOOGLE_PLAY_LICENSING_KEY,
-            object : BillingProcessor.IBillingHandler {
-                override fun onProductPurchased(productId: String, details: PurchaseInfo?) {}
-
-                override fun onPurchaseHistoryRestored() {
-                    showToast(R.string.restored_previous_purchase_please_restart)
-                }
-
-                override fun onBillingError(errorCode: Int, error: Throwable?) {}
-
-                override fun onBillingInitialized() {}
-            })
-
         // setting Error activity
         CaocConfig.Builder.create().errorActivity(ErrorActivity::class.java).apply()
     }
 
     override fun onTerminate() {
         super.onTerminate()
-        billingProcessor.release()
         wallpaperAccentManager.release()
     }
 
@@ -86,9 +67,7 @@ class App : Application() {
         }
 
         fun isProVersion(): Boolean {
-            return BuildConfig.DEBUG || instance?.billingProcessor!!.isPurchased(
-                PRO_VERSION_PRODUCT_ID
-            )
+            return true
         }
     }
 }

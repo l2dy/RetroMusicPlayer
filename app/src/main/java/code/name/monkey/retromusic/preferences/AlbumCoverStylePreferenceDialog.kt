@@ -81,7 +81,6 @@ class AlbumCoverStylePreferenceDialog : DialogFragment(),
                 if (isAlbumCoverStyle(coverStyle)) {
                     val result = getString(coverStyle.titleRes) + " theme is Pro version feature."
                     showToast(result)
-                    NavigationUtil.goToProVersion(requireActivity())
                 } else {
                     PreferenceUtil.albumCoverStyle = coverStyle
                 }

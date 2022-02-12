@@ -57,7 +57,6 @@ class AboutFragment : Fragment(R.layout.fragment_about), View.OnClickListener {
         binding.aboutContent.cardRetroInfo.appRate.setOnClickListener(this)
         binding.aboutContent.cardRetroInfo.appTranslation.setOnClickListener(this)
         binding.aboutContent.cardRetroInfo.appShare.setOnClickListener(this)
-        binding.aboutContent.cardRetroInfo.donateLink.setOnClickListener(this)
         binding.aboutContent.cardRetroInfo.bugReportLink.setOnClickListener(this)
 
         binding.aboutContent.cardSocial.telegramLink.setOnClickListener(this)
@@ -79,7 +78,6 @@ class AboutFragment : Fragment(R.layout.fragment_about), View.OnClickListener {
             R.id.appTranslation -> openUrl(Constants.TRANSLATE)
             R.id.appRate -> openUrl(Constants.RATE_ON_GOOGLE_PLAY)
             R.id.appShare -> shareApp()
-            R.id.donateLink -> NavigationUtil.goToSupportDevelopment(requireActivity())
             R.id.instagramLink -> openUrl(Constants.APP_INSTAGRAM_LINK)
             R.id.twitterLink -> openUrl(Constants.APP_TWITTER_LINK)
             R.id.changelog -> NavigationUtil.gotoWhatNews(requireActivity())
